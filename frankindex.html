@@ -1,0 +1,425 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<!--ACA LOS LINKS PARA BOOSTRAP J QUERY Y LOS ESTILOS-->
+		<meta charset="utf-8">
+		<title>Franklin Final E-COMMERCE</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="styles.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.6.0/font/bootstrap-icons.min.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+		
+	</head>
+	<body>
+
+		
+ 		<!-- aca inicio la barra de navegacion   -->
+
+		
+		 <div class="pos-f-t align-items-between">
+			<div class="collapse" id="navbarToggleExternalContent">
+			  <div class="bg-primary  p-4">
+				<h4 class="text-white">Collapsed content</h4>
+				<span class="text-muted">Toggleable via the navbar brand.</span>
+			  </div>
+			</div>
+			<!-- aca inicio la barra de navegacion segunda parte    -->
+			<nav id="navbar" class="navbar navbar-dark bg-dark justify-content-evenly">
+			  <div>
+				<h2 id="animation" class="animation">Welcome to Medellin Store</h2>
+				<h6 class="text-white text-center">Always in fashion</h6>
+			  </div>
+			  <div class="col-2">
+				<button id="view_cart" class="btn btn-success navbar-toggler w-50 bg-secondary border-white" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft"><i class="bi bi-cart4"></i></button>
+			  </div>
+			</nav>
+		  </div>
+		  
+
+		 <!-- aca finalizo  la barra de navegacion completamente   -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 <!-- aca inicio con el contenedor que muestra los productos -->
+
+
+		  
+		<div id="container_deProductos" class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+			
+		</div>
+
+		
+		
+	</div>
+
+ <!-- aca finaliza con el contenedor que muestra los productos -->
+
+	
+
+
+
+
+
+
+
+	<!--aca inicio del off canvas para mostar los producto del carrito -->
+	<div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+		<div class="offcanvas-header">
+			<h5 id="offcanvasLeftLabel" class="titulo_canvas">Medellin Store Shopping Cart</h5>
+			<button type="button" class="btn-close text-reset"  data-bs-dismiss="offcanvas" aria-label="Close" style="background-color: grey;"></button>
+		</div>
+		<div class="offcanvas-body">
+			<select id="monedaSeleccionada" class="form-select mb-3">
+			  <option selected value="CAD">Canadian Dollars $</option>
+			  <option value="USD">US Dollars $</option>
+			</select>
+			<div >
+				 <!-- aca inicio con el contenedor que muestra las cabeceras donde esta el prducto cantidad precio total -->
+				<div id="canvas_shopping_car_subtotal" class="row row-cols-5">
+					<div class="col-2 mb-1 text-center cabeceras"><b>Delete</b></div>
+					<div class="col-4 mb-1 text-center cabeceras"><b>Products</b></div>
+					<div class="col-2 mb-1 text-center cabeceras"><b>#Items</b></div>
+					<div class="col-2 mb-1 text-center cabeceras"><b>Price</b></div>
+					<div class="col-2 mb-1 text-end cabeceras"><b>Total</b></div>
+					<div class="col-12 mb-1 text-white" ><hr></div>
+				</div>
+			</div>
+			<!-- aca finalizo con el contenedor que muestra las cabeceras donde esta el prducto cantidad precio total -->
+
+			<hr class="cabeceras">
+
+			<!-- aca inicio con el contenedor precio total el de abajo final final -->
+			<div id="totalCompraEnElCarrito" class="text-end text-white"></div>
+				<!-- aca finalizo con el contenedor precio total el de abajo final final -->
+
+			<hr class="cabeceras">
+
+				<!-- aca inicio con el contenedor que muestra los dos botones para pagar o para limoiar el carro -->
+			<div class="d-flex justify-content-evenly">			
+				<button id="car_checkout_btn" onclick="Pagar()" class="btn btn-success mt-3 text-white" data-bs-toggle="modal" data-bs-target="#link_Modal" data-bs-dismiss="modal" style="background-color: rgb(18, 159, 159);">Pay Now</button>
+				<button id="car_clear_btn" onclick="limpiar_carrito()" class="btn btn-warning mt-3 ">Empty Cart</button>			
+			</div>
+				<!-- aca finalizo con el contenedor que muestra los dos botones para pagar o para limoiar el carro -->
+		</div>
+		<!-- aca finalizo con el cuerpo de off canvas  -->
+	</div>
+	<!-- aca finalizo con OFF CANVAS  -->
+
+
+
+
+
+
+
+	<!-- aca inicio con la modal de las cuatro pestanas  -->
+	<div class="modal fade" id="link_Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+			<div class="modal-content  bg-dark">
+				<div class="modal-header text-white">
+				<h5 class="modal-title text-center cabeceras" id="ModalLabel">Checkout</h5>
+				<button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body text-white">
+						<div class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+							<div class="row row-cols-4">
+								<!--aca inicia la opcion 1  es decir la primeras coluna del nav de la modal-->
+								<div class="nav-item col-3 mb-1 text-center " role="presentation">
+
+									<button class="nav-link active cabeceras" id="pills-payment-tab" data-bs-toggle="pill" data-bs-target="#pills-payment" type="button" role="tab" aria-controls="pills-payment" aria-selected="true"><ion-icon name="card-sharp"></ion-icon><i class="bi bi-credit-card"></i> Payment Method </button>
+									
+								</div>
+								<!--aca inicia la opcion 2  es decir la segunda coluna del nav de la modal-->
+								<div class="nav-item col-2=3 mb-1 text-center " role="presentation">
+									<button class="nav-link" id="pills-billing-tab" data-bs-toggle="pill" data-bs-target="#pills-billing" type="button" role="tab" aria-controls="pills-billing" aria-selected="false"><i class="bi bi-person-video2"></i> Billing Details </button>
+								</div>
+								<!--aca inicia la opcion 3  es decir la tercera coluna del nav de la modal-->
+								<div class="nav-item col-3 mb-1 text-center " role="presentation">
+									<button class="nav-link" id="pills-shipping-tab" data-bs-toggle="pill" data-bs-target="#pills-shipping" type="button" role="tab" aria-controls="pills-shipping" aria-selected="false"><i class="bi bi-truck"></i> Shipping Details</button>
+								</div>
+								<!--aca inicia la opcion 4  es decir la cuarta coluna del nav de la modal-->
+								<div class="nav-item col-3 mb-1 text-center " role="presentation">
+									<button class="nav-link" id="pills-order-tab" data-bs-toggle="pill" data-bs-target="#pills-order" type="button" role="tab" aria-controls="pills-order" aria-selected="false"><i class="bi bi-bag-check"></i> Order Confirmation</button>
+								</div>
+							</div>
+						</div>
+						
+					<div class="tab-content" id="pills-tabContent">
+						<!--aca inicia el contenido de  la opcion 1 para la validacion de la tarjeta de credito-->
+							<div class="tab-pane fade show active" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment-tab">
+							<h3 class="text-center cabeceras"><b>Payment Method</b></h3>
+							<form class="row g-3">
+								<label for="creditCard" class="form-label">Credit Card Number</label>
+								<input type="text" class="form-control" id="creditCard" placeholder="1111 1111 1111 1111" required	>
+								<h6 id="text_invalid_credit_card" class="form-label"></h6>
+
+
+								<div class="col-md-3">
+									<label for="expirationMonth" class="form-label">Expiration Date Month</label>
+									<input type="text" class="form-control" id="expirationDate" placeholder="06" required>
+									<h6 id="text_invalid_month" class="form-label"></h6>							
+								</div>
+
+
+								<div class="col-md-3">
+									<label for="expirationYear" class="form-label text-white" >Expiration year</label>
+									<input type="text" class="form-control" id="expirationYear" placeholder="2028" required>
+									<h6 id="text_invalid_year" class="form-label"></h6>
+								</div>
+								<div class="col-md-6">
+									<label for="securityCode" class="form-label">Security code</label>
+									<input type="text" class="form-control" id="securityCode" placeholder="456" required>
+									<h6 id="Text_security_Code" class="form-label"></h6>
+								</div>
+								<div class="col-12">
+									<button class="btn btn-primary btn-continue mt-3" data-bs-toggle="pill" data-bs-target="#pills-billing" style="background-color: rgb(18, 159, 159);" id="paso_al_segundo_form">Validate</button>
+								</div>
+							</form>
+						</div>
+
+						<!--aca finaliza  el contenido de  la opcion 1 para la validacion de la tarjeta de credito-->
+
+						<!--aca inicia el contenido de  la opcion 2 para la direccion y datos del cliente-->
+						<div class="tab-pane fade" id="pills-billing" role="tabpanel" aria-labelledby="pills-billing-tab">
+						
+						<form class="row g-3">
+							<div class="col-md-6">
+								<label for="inputFName" class="form-label">First Name</label>
+								<input type="text" class="form-control" id="inputFName"  placeholder="First Name">
+							</div>
+							<div class="col-md-6">
+								<label for="inputLName" class="form-label">Last Name</label>
+								<input type="text" class="form-control" id="inputLName"  placeholder="Last Name">
+							</div>
+							<div class="col-12">
+								<label for="inputAddress" class="form-label">Billing Address</label>
+								<input type="text" class="form-control" id="inputAddress" placeholder="780 Claremont Ave">
+							</div>
+							<div class="col-12">
+								<label for="inputAddress2" class="form-label">Billing Address Alternative</label>
+								<input type="text" class="form-control" id="inputAddress2" placeholder="Apt, WareHouse or floor">
+							</div>
+							<div class="col-md-6">
+								<label for="inputCity" class="form-label">City</label>
+								<input type="text" class="form-control" id="inputCity">
+							</div>
+							<div class="col-md-6">
+								<label for="inputProvince" class="form-label">Province</label>
+								<select id="inputProvince" class="form-select mb-3">
+									<option class="bg-dark cabeceras">Alberta</option>
+									<option class="bg-dark cabeceras">BC</option>
+									<option class="bg-dark cabeceras">Manitoba</option>
+									<option class="bg-dark cabeceras">New Brunswick</option>
+									<option class="bg-dark cabeceras">New Foundland and Labrador</option>
+									<option class="bg-dark cabeceras">Nova Scotia</option>
+									<option class="bg-dark cabeceras">Ontario</option>
+									<option class="bg-dark cabeceras">Princes Edward Island</option>
+									<option class="bg-dark cabeceras">Quebec</option>
+									<option class="bg-dark cabeceras">Saskatchewan</option>
+									<option class="bg-dark cabeceras">Northwest Territories</option>
+									<option class="bg-dark cabeceras">Nunavut</option>
+									<option class="bg-dark cabeceras">Yukon</option>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label for="inputCountry" class="form-label">Country</label>
+								<select id="inputCountry" class="form-select mb-3">
+									<option selected value="CAD" class="bg-dark cabeceras">Canada</option>
+									<option value="USD" class="bg-dark cabeceras">USA</option>									
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label for="inputPostalcode" class="form-label">Postal Code</label>
+								<input type="text" class="form-control" id="inputPostalcode" placeholder="V8Y 1K1">
+							</div>
+							<div class="col-md-12">
+								<label for="inputPhonenumber" class="form-label">Phone Number</label>
+								<input type="text" class="form-control" id="inputPhonenumber" placeholder="1231234567">
+							</div>
+							<div class="col-md-12">
+								<label for="inputEmail" class="form-label">E-mail</label>
+								<input type="text" class="form-control" id="inputEmail" placeholder="franklin.tejadag@camosun.bc.ca">
+							</div>
+							<div class="col-12">
+								<button type="submit" class="btn btn-primary btn-continue mt-3" style="background-color: rgb(18, 159, 159);">Validate</button>
+							</div>
+						</form>
+						
+						</div>
+						<!--aca finaliza el contenido de  la opcion 2 para la direccion y datos del cliente-->
+
+						<!--aca inicia el contenido de  la opcion 3 para la direccion 2 y datos del cliente-->
+						<div class="tab-pane fade" id="pills-shipping" role="tabpanel" aria-labelledby="pills-shipping-tab">
+							<div class="form-check mb-3">
+									<input class="form-check-input" type="checkbox" value="1" id="shipping_CheckChecked" checked>
+									<label class="form-check-label mb-3" for="shipping_CheckChecked">
+										Shipping information is the same as my Billing Address
+									</label>
+									<form id="shipping_form" class="row g-3">
+										<div class="col-md-6">
+											<label for="inputFName_shipping" class="form-label">First Name</label>
+											<input type="text" class="form-control" id="inputFName_shipping"  placeholder="Your First Name">
+										</div>
+										<div class="col-md-6">
+											<label for="inputLName_shipping" class="form-label">Last Name</label>
+											<input type="text" class="form-control" id="inputLName_shipping"  placeholder="Your Last Name">
+										</div>
+										<div class="col-12">
+											<label for="inputAddress_shipping" class="form-label">Shipping Address</label>
+											<input type="text" class="form-control" id="inputAddress_shipping" placeholder="1234 Main St">
+										</div>
+										<div class="col-12">
+											<label for="inputAddress2_shipping" class="form-label">Shipping Address Alternative</label>
+											<input type="text" class="form-control" id="inputAddress2_shipping" placeholder="Apartment, studio, or floor">
+										</div>
+										<div class="col-md-6">
+											<label for="inputCity_shipping" class="form-label">City</label>
+											<input type="text" class="form-control" id="inputCity_shipping">
+										</div>
+										<div class="col-md-6">
+											<label for="inputProvince_shipping" class="form-label">Province</label>
+											<select id="inputProvince_shipping" class="form-select mb-3">
+												<option class="bg-dark cabeceras">Alberta</option>
+												<option class="bg-dark cabeceras">BC</option>
+												<option class="bg-dark cabeceras">Manitoba</option>
+												<option class="bg-dark cabeceras">New Brunswick</option>
+												<option class="bg-dark cabeceras">New Foundland and Labrador</option>
+												<option class="bg-dark cabeceras">Nova Scotia</option>
+												<option class="bg-dark cabeceras">Ontario</option>
+												<option class="bg-dark cabeceras">Princes Edward Island</option>
+												<option class="bg-dark cabeceras">Quebec</option>
+												<option class="bg-dark cabeceras">Saskatchewan</option>
+												<option class="bg-dark cabeceras">Northwest Territories</option>
+												<option class="bg-dark cabeceras">Nunavut</option>
+												<option class="bg-dark cabeceras">Yukon</option>
+											</select>
+										</div>
+										<div class="col-md-6">
+											<label for="inputCountry_shipping" class="form-label">Country</label>
+											<select id="inputCountry_shipping" class="form-select mb-3">
+												<option selected value="1" class="bg-dark cabeceras">Canada</option>
+												<option value="2" class="bg-dark cabeceras">US</option>												
+											</select>
+										</div>
+										<div class="col-md-6">
+											<label for="inputPostalcode_shipping" class="form-label">Postal Code</label>
+											<input type="text" class="form-control" id="inputPostalcode_shipping" placeholder="V8Y 1K1">
+										</div>
+									</form>
+
+								<div class="col-12">
+									<button type="submit" class="btn btn-primary btn-continue mt-3" style="background-color: rgb(18, 159, 159);">Continue</button>
+								</div>
+							</div>
+						</div>
+						<!--aca finaliza el contenido de  la opcion 3 para la direccion y datos del cliente-->
+
+						<!--aca inicia el contenido de  la opcion 4 para la confirmacion final del pago-->
+						<div class="tab-pane fade" id="pills-order" role="tabpanel" aria-labelledby="pills-order-tab">
+							<h3 class="text-center mb-3">Order Details</h3>
+							<hr>
+							<div id="order_details" class="row row-cols-4 container">
+								<div class="col mb-3 text-center"><b>Item</b></div>
+								<div class="col mb-3 text-center"><b>Quantity</b></div>
+								<div class="col mb-3 text-center"><b>Price</b></div>
+								<div class="col mb-3 text-end"><b>Total</b></div>
+							</div>
+							<div id="order_details_totals" class="row row-cols-2 container">
+								<hr class="col-12 mb-2 mt-2">
+								<div class="col mb-2 text-start"><b>Subtotal</b></div>
+								<div id ="order_details_totals_sub" class="col mb-2 text-end"><b><span>$</span> 0.00</b></div>
+								<hr class="col-12 mb-2 mt-2">
+								<div class="col mb-2 text-start"><b>Shipping</b></div>
+								<div id ="order_details_totals_shipping" class="col mb-2 text-end"><b><span>$</span> 0.00</b></div>
+								<hr class="col-12 mb-2 mt-2">
+								<div class="col mb-2 text-start"><b>Tax</b></div>
+								<div id ="order_details_totals_tax" class="col mb-2 text-end"><b><span>$</span> 0.00</b></div>
+								<hr class="col-12 mb-2 mt-2">
+								<div class="col mb-2 text-start"><b>Order Total</b></div>
+								<div id ="order_details_totals_total" class="col mb-2 text-end"><b><span>$</span> 0.00</b></div>
+								<hr class="col-12 mb-2 mt-2">
+							</div>
+
+							
+						
+									<!--aca inicia el container del boton que envia los datos al endpoint-->
+							<div class="col-12">
+								<button type="submit" class="btn btn-primary mt-3" data-bs-target="#submit_ModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal" style="background-color: rgb(18, 159, 159);">Complete Order</button>
+							</div>
+									<!--aca finaliza el container del boton que envia los datos al endpoint-->
+						</div>
+					</div>
+				</div>
+			</div>
+	  </div>
+	</div>
+
+	<!--aca inicia la ultima modal de confirmacion-->
+	<!-- Modal -->
+	<div class="modal fade" id="submit_ModalToggle2" aria-hidden="true" aria-labelledby="submit_ModalLabel" tabindex="1">
+		<div class="modal-dialog">
+			<div class="modal-content bg-dark">
+				<div class="modal-header">
+					<h5 class="modal-title cabeceras" id="submit_ModalLabel"><i class="bi bi-bag-check text-success"></i> Successfully !</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: aliceblue;"></button>
+				</div>
+				<div class="modal-body">
+					<!-- aca inicia contenido ultima modal la de confirmacion el cuerpo  -->
+					<p class="cabeceras text-center">Payment process completed!</p>
+					<p class="cabeceras text-center">Thank you!</p>
+
+					<h3 class="animation text-center">Medellin Store</h3>
+					
+				</div>
+				<!-- aca finaliza contenido ultima modal la de confirmacion el cuerpo  -->
+				<div class="modal-footer">
+					<button id="close_success_modal" onclick="limpiar_carrito()" type="button" class="btn btn-primary" data-bs-dismiss="modal" style="background-color: rgb(18, 159, 159);">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--end the Modal -->
+
+
+	
+		<!-- inicio de mi footer seccion  --> 
+			
+
+
+
+
+
+		<footer class="w-100 mt-2" id="pie">
+			<div class="container-fluid w-100 ">
+			
+				<p id="piename" class="text-center animation">Franklin Tejada 2023® </p>
+			
+			
+		
+			</div>
+		</footer>
+		
+		<!-- fin de mi footer seccion  --> 
+  
+	<!--scripts bootstrap and js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+	<script src="./Frankscript.js"></script>
+	<script src="Api_geocoder.js.js"></script>
+	<script src="formulario_payment.js"></script>
+
+	</body>
+	
+</html>

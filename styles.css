@@ -1,0 +1,96 @@
+/* Agrega un icono de fuente */
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0');
+	src: url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), 
+		 url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), 
+		 url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), 
+		 url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), 
+		 url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+  }
+  
+  /* Establece el icono de fuente para el elemento ::after */
+  .is-valid::after {
+	content: '\f00c'; /* código del icono de verificación */
+	font-family: FontAwesome;
+	font-size: 14px;
+	color: green;
+	position: absolute;
+	right: 5px;
+	top: 50%;
+	transform: translateY(-50%);
+  }
+  
+
+
+
+/* estilos para el cuerpo especialmente para el background */
+body {
+	width: 100%;
+	height: 100%;
+	margin: 2rem;
+	background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/04/Dark-grey-texture-abstract-hd-wallpaper.jpg");
+	
+} 
+/* finaliza estilos para el cuerpo especialmente para el background */
+
+#delete_item{
+	color:red;
+}
+
+/* estilos para el boton de carro y el carro */
+#view_cart{
+
+	background-color: rgba(240, 248, 255, 0);
+}
+#view_cart:hover{
+
+	border: 3px solid white;
+	box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+}
+/* aca finaliza estilos para el boton de carro y el carro */
+
+
+/* aca inicia la animacion del titulo de la pagina en el DOM  */
+	.animation {
+		animation: blink 3s infinite alternate;
+	}
+
+	@keyframes blink {
+		0% {
+			opacity: 0.2;
+			color: white;
+		  }
+		  50% {
+			opacity: 1;
+			color: rgb(203, 214, 110);
+		  }
+		  100% {
+			opacity: 0.2;
+			color: rgb(91, 247, 236);
+		  }
+	}
+  /* aca finaliza la animacion titulo de la pagina */
+
+  /* aca inia  estilo de boton pagar de cada producto en la card */
+  #car_checkout_btn{width:fit-content}
+
+  #car_clear_btn{width:fit-content}
+  
+  /* aca finaliza  estilo de boton comprar de cada producto */
+
+    /* aca inicia  estilo de offcanvas titolu */
+  .titulo_canvas, .cabeceras{
+
+	color: aquamarine;
+  }
+ /* aca finaliza  estilo de offcanvas titolu */
+
+  /* aca inicia estilo del footer*/
+  #piename{
+
+	color: aquamarine;
+  }
+   /* aca finaliza estilo del footer*/
